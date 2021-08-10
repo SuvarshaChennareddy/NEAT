@@ -21,6 +21,7 @@ import gc
 import math
 
 
+
 # Start pygame
 pygame.init()
 
@@ -183,8 +184,6 @@ class Bird:
         velocity = self.velocity
         gravity = self.gravity
         width = pipe.width
-        #print(pipe.height)
-        #return [pipeDistance, Dgap, dSky, dGround]
         return [pipeDistance, Dgap2, posY]
 
         
@@ -269,14 +268,11 @@ def run(bird, num):
     pygame.event.get()
     while not bird.isDead():
         counter += (50*(bird.score+1))
-        #print(counter)
         if (bird.pos[1] <= 0):
             bird.die()
         windowObj.fill(backgroundColor)
 
 
-        # Check for event
-        
         hs = 1000
         best = pipes[0]
 
@@ -287,7 +283,6 @@ def run(bird, num):
                 best = pipe
         
         inputs = bird.getInputs(best)
-        #print("result", num, neat.decide(inputs, num))
         try:
             if (round(neat.decide(inputs, num)[0]) == 1):
                 bird.Click()
@@ -306,19 +301,12 @@ def run(bird, num):
         bird.velocity += bird.gravity
 
         bird.fitness = counter - math.sqrt(((best.pos - bird.pos[0])**2) + ((best.height+best.gap - bird.pos[1])**2))
-##        if bird.score >= 1:
-##            #bird.fitness = 50*counter - (best.pos - bird.pos[0])
-##            bird.fitness +=1
-##        else:
-##            bird.fitness += 0.5
 
 
-        #print(best.pos)
 
 
 
         neat.setFitness(num, bird.fitness)
-        #print("fitness ", neat.fitness)
 
 
 
@@ -330,7 +318,6 @@ def run(bird, num):
 
             return
 
-            #bird.velocity = 0
         
 
         for pipe in pipes:
@@ -344,25 +331,9 @@ def run(bird, num):
             if (not pipe.scored and pipe.pos + pipe.width < bird.pos[0] ):
                 bird.score+=1
 
-                #bird.fitness += 5
 
-                #del pipes[pipes.index(pipe)]
-
-            #pipe.scored = True
-
-        #scoreSurface = fontObj.render( 'Score: ' + str(score) + ' High: ' + str(highScore), False, fontColor)
-
-        #scoreRect = scoreSurface.get_rect()
-
-        #scoreRect.topleft = (windowObj.get_height() / 2 , 10)
-
-        #windowObj.blit(scoreSurface, scoreRect)
-
-        #pygame.draw.rect(windowObj, groundColor, (0, groundLevel, windowObj.get_width(), windowObj.get_height()) )
-    #print("gay")
         bird.draw(windowObj)
         
-        #pygame.display.update()
 
         fpsTimer.tick(maxFPS)
 
@@ -398,8 +369,6 @@ def Pip():
             gc.collect()
             
             neat.runOrganisms()
-            #print(neat.organisms.organs)
-            #print(neat.organisms.species)
             
         for event in pygame.event.get():
 
@@ -420,27 +389,12 @@ def Pip():
 
             pipe.draw(windowObj)
 
-            """"
-
-            if ( not pipe.scored and pipe.pos + pipe.width < bird.pos[0] ):
-
-                bird.score += 1
-
-                pipe.scored = True
-            """
 
             if( not pipe.move(-10)):
 
                 del pipe
 
 
-        #scoreSurface = fontObj.render( 'Score: ' + str(score) + ' High: ' + str(highScore), False, fontColor)
-
-        #scoreRect = scoreSurface.get_rect()
-
-        #scoreRect.topleft = (windowObj.get_height() / 2 , 10)
-
-        #windowObj.blit(scoreSurface, scoreRect)
         for bird in birds:
             bird.draw(windowObj)
 
@@ -450,9 +404,6 @@ def Pip():
         fpsTimer.tick(maxFPS)
 
 
-
-
-        # Draw stuff
 
 pip = threading.Thread(target = Pip)
 pip.start()
