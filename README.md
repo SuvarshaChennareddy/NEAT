@@ -33,12 +33,12 @@ import  neat2  as  neat
 import  threading
 ....
 
-pop_size = ... //The population size of one generation
-iteration_num = ... //The number of agents to be run at a time. This value is less than or equal to pop_num
-gen_num = ...
-num_inputs = ... //The number of inputs to the Neural Networks
-num_outputs = ... //The number of outputs of the Neural Networks
-cutoff = ... //The top (best) fraction of the organisms to take part in reproduction 
+pop_size = ... #The population size of one generation
+iteration_num = ... #The number of agents to be run at a time. This value is less than or equal to pop_num
+gen_num = ... #The number of generations
+num_inputs = ... #The number of inputs to the Neural Networks
+num_outputs = ... #The number of outputs of the Neural Networks
+cutoff = ... #The top (best) fraction of the organisms to take part in reproduction 
 
 ....
 
@@ -55,29 +55,31 @@ class Agent():
 
 
 def func(agent, num):
-   //This function is used for running the bird (agent) in the game/environment.
+   #This function is used for running the bird (agent) in the game/environment.
    
    while (not agent.isDead()):
-      //render game/environment and agent (if possible)
+      #Render game/environment and agent (if possible)
 
-      inputs = ... //inputs to the neural network. Usually what the agent has observed or the environment's states
+      inputs = ... #inputs to the neural network. Usually what the agent has observed or the environment's states
       
-      action = neat.decide(inputs, num) //These are the outputs of the neural netwrok. One can also perform an extra function on these outputs. 
-      // An if-statement can also be used to decide an action
+      action = neat.decide(inputs, num) #These are the outputs of the neural netwrok. One can also perform an extra function on these outputs. 
+      #An if-statement can also be used to decide an action
 
-      agent.fitness  =  ... //update bird's fitness
+      agent.fitness  =  ... #update bird's fitness
 
-      state = ... //state of the environment or agent's postion
+      state = ... #state of the environment or agent's postion
       if (state == condition):
          bird.die()
 
 
 
 def check():
- while count/pop_size <= gen_num:
-    if (len(neat.getOrganisms()) == 0):
-     // reset environment/game if required
-     neat.runOrganisms() //repopulate the environment
+  count = 0 
+  while count/pop_size <= gen_num:
+     if (len(neat.getOrganisms()) == 0):
+        #reset environment/game if required
+        neat.runOrganisms() #repopulate the environment
+        count+=iteration_num
        
  ....      
       
