@@ -3,7 +3,7 @@
 
 ## About  
 
-NEAT (NeuroEvolution of Augmenting Topologies) is a genetic algorithm used to evolve artificial neural networks. More can be read from the [original paper]([http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)) by Kenneth O. Stanley and Risto Miikkulainen. The algorithm itself will not be discussed here. This repository is an implementation of NEAT.  A couple of examples are included here as well.  
+NEAT (NeuroEvolution of Augmenting Topologies) is a genetic algorithm used to evolve artificial neural networks. More can be read from the [original paper](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf) by Kenneth O. Stanley and Risto Miikkulainen. The algorithm itself will not be discussed here. This repository is an implementation of NEAT.  A couple of examples are included here as well.  
   
 
 ## Implementation   
